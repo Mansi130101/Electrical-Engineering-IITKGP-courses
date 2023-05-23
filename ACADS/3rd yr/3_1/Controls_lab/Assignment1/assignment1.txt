@@ -1,0 +1,199 @@
+%QS: 1. Basic Mathematical Operations
+
+% 1.1
+
+pi
+sqrt(2)
+exp(1)
+format long
+pi
+sqrt(2)
+exp(1)
+% 1.2
+
+1e20
+3.54e-5
+% 1.3
+
+exp(3)
+tan(1)
+asin(sin(5))
+sin (asin(5))
+log(exp(-2 + 3*1i))
+% 1.4
+
+z = 5.32 - 3.24*1i
+zc = conj(z)
+modzsq = z*zc
+abs(z)^2
+sqrtz = sqrt(modzsq^0.5)*exp(angle(z)*0.5i)
+sqrt(z)
+2*real(z)
+z+zc
+2*imag(z)
+z-zc
+% 1.5
+
+e = 2.718
+absolute_error = (exp(1) - e)
+relative_error = absolute_error/exp(1)
+
+%QS: 2. Vector Operations
+
+% 2.1
+
+u = [4,3,7]
+% 2.2
+
+v = [3;5;2]
+t_v = [3,5,2]'
+%2.3
+ 
+u+v
+element_wise_mult = u.*v
+inner_product = dot(u,v)
+u-1
+% 2.4
+
+% 2.4.1
+u1 = (1:5)
+% 2.4.2
+u2 = (1:.5:3)
+% 2.4.3
+u3 = (5:-1:1)
+% 2.5
+
+row = linspace(1,10,50 )
+% 2.6
+
+enteries = length((1:pi:exp(10)))
+% 2.7
+
+rand_int = rand(100,1).'
+[val, index] = min(rand_int)
+% 2.8
+
+% element wise multiplication of row vector of (1x5) with 
+% numbers varying from 0 to pi, with another row vector of 
+% (1x5) such that only the elements of index 2, 5 are printed
+% rest are 0.
+
+linspace(0, pi, 5) .* [0 1 0 0 1] 
+% 2.9
+
+A = 0:.1:10
+A = A.^2
+result = sum(A)
+
+%QS: 3.	Matrix Operations
+
+% 3.1
+
+ones(4,4)
+eye(4)
+% 3.2
+
+M = diag([5.4, -3.9, 3.5, 8.2, 1])
+% 3.3
+
+M1 = [1 2 3; 4 5 6; 3 8 9]
+M2 = M1'
+M1 + M2
+% 3.4
+
+M3 = [3.2 -4.5; 7.6 8.1]
+M3./max(M3,[],'all')
+% 3.5
+
+M4 = [0.5 0.2; 0.4 0.7]
+M4*M4
+M4^2
+% 3.6
+
+M5 = [1 1 1 1 1 1 1 1; -2 -1 0 1 2 3 4 5; 4 1 0 1 4 9 16 25]
+M5(3,7)
+% 3.7
+
+v1 = M5(3,:)
+v2 = M5(:,7)
+% 3.8
+
+M
+% the 2nd row elements are multiplied by 3.2
+M(2, :) = 3.2*M(2,:)
+% the 3nd row elements are added with 0.527 times the values
+% of the elements of 1st row.
+
+M(3, :) = M(3,:) + 0.527*M(1,:)
+% 3.9
+
+M = [5 2 -1 1; 2 7 1 -2; 0 1 10 3; -1 3 2 9]
+b = [13; 9; 1; 30]
+x = M \ b
+
+%QS: 4.	Conditionals, Loops and User Defined Functions
+
+% 4.1
+
+sum_for = 0;
+sz = size(M5)
+for r = 1:sz(1,1)
+    for c = 1:sz(1,2)
+        sum_for=sum_for+M5(r,c);
+    end
+end
+        
+sum_for
+sum(sum(M5))
+% 4.2
+
+k=0;
+
+while 1/k > pi/1000
+    k=k+1;
+end
+
+k
+% 4.3 
+
+mysinc(0)
+mysinc(2)
+sin(2)/2
+% 4.4
+
+mfun1(0:3)  
+mfun2(0:3)
+% 4.5
+
+h = 1e-5;
+derivative_central_approx (@sin,1,h)
+(sin(1 + h) - sin(1 - h))/(2*h)
+derivative_central_approx (@mfun1, 1, h)
+mfun2(1)
+
+%QS: 5.	Plots
+
+% 5.1
+
+vec = linspace(1,10,50)
+y = sin(vec) + 1 
+plot(vec,y,'c--')
+% 5.1.1
+
+plot(vec,y,'go-')
+% 5.1.2
+
+plot(vec,y,'go-')
+ylim([-1,2])
+grid on
+legend("sin(x) + 1")
+title("The System Response")
+% 5.2
+
+vec_2 = linspace(-10,10,50);
+plot(vec_2,mfun1(vec_2),'r--','LineWidth',4.0)
+hold on
+plot(vec_2,mfun2(vec_2),'black')
+legend('mfun1','mfun2')
+title('19ee10039')
+hold off
