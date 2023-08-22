@@ -7,4 +7,4 @@ Course website: http://cse.iitkgp.ac.in/~aritrah/course/theory/ML/Spring2023/
 The projects submitted recieved 
 1. 28/30 - lack of comments
 2. 30/30
-3. /30
+3. 30/30
